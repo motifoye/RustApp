@@ -9,22 +9,22 @@ const FILE_PATH_2: &str = "C:\\Users\\User\\Desktop\\doc_2.txt";
 
 
 fn main() {
-    println!("::{}::\n",sum(9,9));
-    
+    task_m1();
+}
+
+fn task_m1() {
+    println!("\n\n::: TASK m1 :::\n\n");
     loop {
         let buf = read_line();
-        
-        // if buf.as_bytes().eq(&[113,13,10]) 
-        // if buf.trim().as_bytes().eq(&[113]) 
         if buf.trim().eq("q") {
             println!("[dbg] input equal 'q'");
             break;
         }
-
         write_to_file(FILE_PATH_1, buf);
     }
-
-    println!("-------------\n{}\n------------\n", read_file_all(FILE_PATH_1))
+    println!("-------------\n{}\n------------\n", 
+    read_file_all(FILE_PATH_1));
+    println!("\n\n::: FINISH TASK m1 :::\n\n");
 }
 
 fn sum(a:i32,b:i32) -> i32 {  
