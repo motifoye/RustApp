@@ -1,4 +1,7 @@
+use std::io::{stdin, Read};
+use std::fs::File;
 use std::io::Write;
+
 
 
 const FILE_PATH_1: &str = "C:\\Users\\User\\Desktop\\doc_1.txt";
@@ -6,8 +9,7 @@ const FILE_PATH_2: &str = "C:\\Users\\User\\Desktop\\doc_2.txt";
 
 
 fn main() {
-    std::io::stdout().write_all(b"::4514851481::\n").unwrap();
-    println!("{}\n",sum(9,9));
+    println!("::{}::\n",sum(9,9));
     
     loop {
         let buf = read_line();
@@ -20,17 +22,30 @@ fn main() {
         }
 
         write_to_file(FILE_PATH_1, buf);
-        
     }
+
+    println!("-------------\n{}\n------------\n", read_file_all(FILE_PATH_1))
 }
 
 fn sum(a:i32,b:i32) -> i32 {  
     a+b
 }
 
+fn read_file_all(path: &str) -> String {
+    let mut file = File::options()
+    .read(true)
+    .open(path)
+    .expect("[ERR] fn: read_file_all, can't open file");
+
+    let mut buf = String::new();
+    let _ = file.read_to_string(&mut buf);
+
+    buf
+}
+
 fn write_to_file(path: &str, buf: String) {
-    use std::fs::File;
-    let mut file = File::options().append(true).open(path).expect("[ERR] open file");
+    let mut file = File::options().append(true).open(path)
+    .expect("[ERR] fn: write_to_file, can't open file");
     match write!(file, "{}", buf) {
         Ok(_) => println!("[OK] write file "),
         Err(e) => println!("[ERR] write file | {:?}",e)
@@ -38,14 +53,14 @@ fn write_to_file(path: &str, buf: String) {
 }
 
 fn read_line() -> String {
-    use std::io::stdin;
     let mut buf: String = String::new();
     stdin().read_line(&mut buf).unwrap();
     buf
 }
 
 fn create_vec() {
-    let count: usize = read_line().trim().parse().expect("[ERR] fn: create_vec, can't parse input");
+    let count: usize = read_line().trim().parse()
+    .expect("[ERR] fn: create_vec, can't parse input");
     
     let mut von = vec![0;count];
     for i in 0..count{
