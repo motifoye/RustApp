@@ -9,7 +9,30 @@ const FILE_PATH_2: &str = "C:\\Users\\User\\Desktop\\doc_2.txt";
 
 
 fn main() {
-    task_m1();
+    task_m2();
+}
+
+fn task_m2() {
+    println!("\n\n::: TASK m2 :::\n\n");
+    
+    let buf = read_file_all(FILE_PATH_2);
+    if buf.is_empty() {
+        println!("[ERR] Empty file");
+        return;
+    }
+    let buf = buf.trim().split("\n");
+
+    let mut sum: i32 = 0;
+
+    for i in buf {
+        match i.trim().parse::<i32>() {
+            Ok(n) => sum += n,
+            Err(e) => println!("[ERR] fn: task_m2, {}, '{}'", e, i)
+        }
+    }
+
+    println!("{}", sum);
+    println!("\n\n::: FINISH TASK m2 :::\n\n")
 }
 
 fn task_m1() {
