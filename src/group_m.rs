@@ -1,4 +1,4 @@
-use crate::config::{PATH_FILE_1, PATH_FILE_2};
+use crate::config::{PATH_FILE_1, PATH_FILE_2, PATH_FILE_3};
 use crate::io_worker::*;
 
 pub fn task_m1() {
@@ -55,4 +55,22 @@ pub fn task_m3() {
     write_to_file(&b, buf);
 
     println!("\n\n::: FINISH TASK m3 :::\n\n")
+}
+
+pub fn task_m4() {
+    let buf = read_file_all(PATH_FILE_3);
+    let buf = buf.trim();
+    if buf.is_empty() {
+        println!("[E] Empty file");
+        return;
+    }
+
+    let words: Vec<_> = buf.trim().split(&[' ', '\n']).collect();
+    let mut longest_word = "";
+    for word in words {
+        if word.len() > longest_word.len() {
+            longest_word = word;
+        }
+    }
+    print!("{}", longest_word);
 }
