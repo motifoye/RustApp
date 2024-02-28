@@ -4,11 +4,15 @@ use std::io::Write;
 use std::path::Path;
 use std::process::Command;
 
+pub fn path_exists_file(path: &str) -> bool {
+    Path::new(path).exists()
+}
+
 pub fn read_file_all(path: &str) -> String {
     let mut file = File::options()
-    .read(true)
-    .open(path)
-    .expect("[E] fn: read_file_all, can't open file");
+        .read(true)
+        .open(path)
+        .expect("[E] fn: read_file_all, can't open file");
 
     let mut buf = String::new();
     let _ = file.read_to_string(&mut buf);
@@ -17,8 +21,11 @@ pub fn read_file_all(path: &str) -> String {
 }
 
 pub fn write_to_file(path: &str, buf: String) {
-    let mut file = File::options().append(true).open(path)
-    .expect("[E] fn: write_to_file, can't open file");
+    let mut file = File::options()
+        .append(true)
+        .open(path)
+        .expect("[E] fn: write_to_file, can't open file");
+
     match write!(file, "{}", buf) {
         Ok(_) => println!("[I] write file "),
         Err(e) => println!("[E] write file | {:?}",e)
