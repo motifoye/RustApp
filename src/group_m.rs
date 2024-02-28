@@ -1,4 +1,3 @@
-use std::io::BufRead;
 use crate::config::{PATH_FILE_1, PATH_FILE_2, PATH_FILE_3};
 use crate::io_worker::*;
 
@@ -58,12 +57,20 @@ pub fn task_m3() {
     print("enter path a: ");
     let a = read_line();
     let a = a.trim();
+    if !path_exists_file(a) {
+        println!("[E] Файл не найден");
+        return;
+    }
 
     print("enter path b: ");
     let b = read_line();
     let b = b.trim();
+    if !path_exists_file(b) {
+        println!("[E] Файл не найден");
+        return;
+    }
 
-    let mut buf = read_file_all(&a);
+    let buf = read_file_all(&a);
     write_to_file(&b, buf);
 }
 
