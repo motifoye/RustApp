@@ -2,6 +2,7 @@ use std::fs::File;
 use std::io::{Read, stdin, stdout};
 use std::io::Write;
 use std::path::Path;
+use std::process::Command;
 
 pub fn read_file_all(path: &str) -> String {
     let mut file = File::options()
@@ -33,4 +34,18 @@ pub fn read_line() -> String {
 pub fn print(string: &str) {
     stdout().write_all(string.as_bytes()).unwrap();
     stdout().flush().unwrap();
+}
+
+pub fn pause() {
+    println!("\nEnter any key to continue...");
+    read_line();
+}
+
+pub fn clear() {
+    Command::new("cmd")
+        .args(["/c", "cls"])
+        .spawn()
+        .expect("cls command failed to start")
+        .wait()
+        .expect("failed to wait");
 }

@@ -7,7 +7,7 @@ pub fn task_m1() {
     /// до тех пор, пока он не введет строку "конец".
     /// выведите содержимое файла на экран.
 
-    println!("\n::: TASK m1 :::");
+    println!("::: TASK m1 :::");
     println!("q - выход из цикла\n");
     loop {
         let buf = read_line();
@@ -26,7 +26,7 @@ pub fn task_m2() {
     /// найдите их сумму.
     /// выведите на экран.
 
-    println!("\n::: TASK m2 :::\n");
+    println!("::: TASK m2 :::\n");
 
     let buf = read_file_all(PATH_FILE_2);
     if buf.is_empty() {
@@ -52,7 +52,7 @@ pub fn task_m3() {
     /// Запрашивайте название исходного файла и файла назначения.
     /// скопируйте содержимое исходного файла в файл назначения.
 
-    println!("\n::: TASK m3 :::");
+    println!("::: TASK m3 :::");
     println!("a: source, b: target\n");
 
     print("enter path a: ");
@@ -72,7 +72,7 @@ pub fn task_m4() {
     /// найдите самое длинное слово.
     /// Выведите это слово на экран.
 
-    println!("\n::: TASK m4 :::\n");
+    println!("::: TASK m4 :::\n");
 
     let buf = read_file_all(PATH_FILE_3);
     let buf = buf.trim();
@@ -96,7 +96,7 @@ pub fn task_m5() {
     /// подсчитывает количество строк, слов и символов.
     /// Выведите результаты подсчета на экран.
 
-    println!("\n::: TASK m5 :::\n");
+    println!("::: TASK m5 :::\n");
 
     let buf = read_file_all(PATH_FILE_3);
     if buf.is_empty() {
