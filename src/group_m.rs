@@ -7,7 +7,8 @@ pub fn task_m1() {
     /// до тех пор, пока он не введет строку "конец".
     /// выведите содержимое файла на экран.
 
-        println!("\n\n::: TASK m1 :::\n\n");
+    println!("\n::: TASK m1 :::");
+    println!("q - выход из цикла\n");
     loop {
         let buf = read_line();
         if buf.trim().eq("q") {
@@ -16,9 +17,8 @@ pub fn task_m1() {
         }
         write_to_file(PATH_FILE_1, buf);
     }
-    println!("-------------\n{}\n------------\n",
-             read_file_all(PATH_FILE_1));
-    println!("\n\n::: FINISH TASK m1 :::\n\n");
+    println!("-------------\n{}\n------------",
+    read_file_all(PATH_FILE_1));
 }
 
 pub fn task_m2() {
@@ -26,7 +26,7 @@ pub fn task_m2() {
     /// найдите их сумму.
     /// выведите на экран.
 
-    println!("\n\n::: TASK m2 :::\n\n");
+    println!("\n::: TASK m2 :::\n");
 
     let buf = read_file_all(PATH_FILE_2);
     if buf.is_empty() {
@@ -44,8 +44,7 @@ pub fn task_m2() {
         }
     }
 
-    println!("{}", sum);
-    println!("\n\n::: FINISH TASK m2 :::\n\n")
+    println!("Сумма чисел в файле: {}", sum);
 }
 
 pub fn task_m3() {
@@ -53,8 +52,8 @@ pub fn task_m3() {
     /// Запрашивайте название исходного файла и файла назначения.
     /// скопируйте содержимое исходного файла в файл назначения.
 
-    println!("\n\n::: TASK m3 :::");
-    println!("a: source, b: target\n\n");
+    println!("\n::: TASK m3 :::");
+    println!("a: source, b: target\n");
 
     print("enter path a: ");
     let a = read_line();
@@ -66,14 +65,14 @@ pub fn task_m3() {
 
     let mut buf = read_file_all(&a);
     write_to_file(&b, buf);
-
-    println!("\n\n::: FINISH TASK m3 :::\n\n")
 }
 
 pub fn task_m4() {
     /// открывает файл с набором слов.
     /// найдите самое длинное слово.
     /// Выведите это слово на экран.
+
+    println!("\n::: TASK m4 :::\n");
 
     let buf = read_file_all(PATH_FILE_3);
     let buf = buf.trim();
@@ -96,6 +95,8 @@ pub fn task_m5() {
     /// открывает текстовый файл
     /// подсчитывает количество строк, слов и символов.
     /// Выведите результаты подсчета на экран.
+
+    println!("\n::: TASK m5 :::\n");
 
     let buf = read_file_all(PATH_FILE_3);
     if buf.is_empty() {
