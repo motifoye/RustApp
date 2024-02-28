@@ -44,8 +44,12 @@ pub fn print(string: &str) {
 }
 
 pub fn pause() {
-    println!("\nPress Enter to continue...");
-    read_line();
+    Command::new("cmd")
+        .args(["/c", "pause"])
+        .spawn()
+        .expect("cls command failed to start")
+        .wait()
+        .expect("failed to wait");
 }
 
 pub fn clear() {
