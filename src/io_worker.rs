@@ -37,7 +37,7 @@ pub fn print(string: &str) {
 }
 
 pub fn pause() {
-    println!("\nEnter any key to continue...");
+    println!("\nPress Enter to continue...");
     read_line();
 }
 
