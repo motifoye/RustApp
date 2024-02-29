@@ -91,7 +91,7 @@ pub fn task_m4() {
             longest_word = word;
         }
     }
-    print!("{}", longest_word);
+    println!("{}", longest_word);
 }
 
 /// открывает текстовый файл
