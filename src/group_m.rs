@@ -115,6 +115,6 @@ pub fn task_m5() {
 
     let chars = buf.chars().count();
 
-    print!("{:?} lines <> {:?} words <> {:?} chars",lens, words, chars);
+    println!("{:?} lines <> {:?} words <> {:?} chars",lens, words, chars);
 
 }
