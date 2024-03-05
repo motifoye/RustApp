@@ -22,7 +22,6 @@ fn main() {
                 Navigate::Exiting => { break }
             }
         }
-
         pause();
     }
 }
@@ -39,7 +38,7 @@ fn menu_home() {
     println!("1: Практическое занятие №3 Тема: «Работа с файлами и потоками ввода-вывода.»");
     println!("2: Практическое занятие №4 Тема: «Работа с динамической памятью и управление ею»");
     match read_line().trim() {
-        "0" => unsafe {CURRENT_POSITON=Navigate::Exiting},
+        "0" => unsafe { CURRENT_POSITON=Navigate::Exiting },
         "1" => unsafe { CURRENT_POSITON = Navigate::GroupM },
         "2" => unsafe { CURRENT_POSITON = Navigate::GroupN },
         _ => {println!("Недопустимый вариант")}
@@ -67,9 +66,13 @@ fn group_m(){
 fn group_n(){
     println!("0: Назад");
     println!("1: Динамический массив");
+    println!("2: Динамическая матрица");
+    println!("3: Студенты, оценки в массиве");
     match read_line().trim() {
         "0" => unsafe {CURRENT_POSITON=Navigate::Home},
         "1" => task_n1(),
+        "2" => task_n2(),
+        "3" => task_n3(),
         _ => {println!("Недопустимый вариант")}
     }
 }
