@@ -1,4 +1,5 @@
 use rand::Rng;
+use crate::config::PATH_FILE_4;
 use crate::io_worker::*;
 
 /// запрашивает у пользователя количество элементов в массиве,
@@ -114,5 +115,27 @@ impl Student {
     fn get_average_rating(self) -> f32 {
         self.rating.clone().into_iter().sum::<i32>() as f32 / self.rating.len() as f32
 
+    }
+}
+
+/// открывает файл и
+/// считывает из него данные о студентах (имя, возраст, средние оценки и т.д.).
+/// Динамически выделите память под массив студентов и
+/// заполните его данными из файла.
+/// Выведите информацию о студентах на экран.
+pub fn task_n4() {
+    let in_file_data = read_file_all(PATH_FILE_4);
+    let in_file_data = in_file_data.split('\n');
+
+    let mut students: Vec<Student> = vec![];
+    for data in in_file_data {
+        let t_student: Vec<String> = data.split(';').map(|e| e.trim().to_string()).collect();
+        let student: Student = Student::new(
+            t_student[0].clone(),
+            t_student[1].clone().parse().unwrap(),
+            t_student[2].clone().split(',').map(|e| e.trim().parse::<i32>().unwrap()).collect(),
+        );
+        println!("{:?}",student);
+        students.push(student);
     }
 }

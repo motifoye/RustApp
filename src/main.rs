@@ -68,11 +68,13 @@ fn group_n(){
     println!("1: Динамический массив");
     println!("2: Динамическая матрица");
     println!("3: Студенты, оценки в массиве");
+    println!("4: Инфо о студентах в файле");
     match read_line().trim() {
         "0" => unsafe {CURRENT_POSITON=Navigate::Home},
         "1" => task_n1(),
         "2" => task_n2(),
         "3" => task_n3(),
+        "4" => task_n4(),
         _ => {println!("Недопустимый вариант")}
     }
 }
