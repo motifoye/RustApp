@@ -139,3 +139,16 @@ pub fn task_n4() {
         students.push(student);
     }
 }
+
+/// считывает две строки с клавиатуры и
+/// выделяет для них динамическую память.
+/// Скопируйте первую строку во вторую строку с использованием указателей.
+/// Выведите результат на экран.
+pub fn task_n5() {
+    print("input: ");
+    let a = Box::new(read_line());
+    print("input: ");
+    let b = Box::new(read_line());
+    let c = Box::new(format!("{}{}",a.trim(),b.trim()));
+    println!("{:?}",c);
+}
