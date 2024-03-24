@@ -1,11 +1,13 @@
 use crate::group_m::*;
 use crate::group_n::*;
+use crate::group_p::*;
 use crate::io_worker::{clear, pause, read_line};
 
 mod config;
 mod io_worker;
 mod group_m;
 mod group_n;
+mod group_p;
 
 static mut CURRENT_POSITON: Navigate = Navigate::Home;
 fn main() {
@@ -19,6 +21,7 @@ fn main() {
                 Navigate::Home => { menu_home() }
                 Navigate::GroupM => { group_m() }
                 Navigate::GroupN => { group_n() }
+                Navigate::GroupP => { group_p() }
                 Navigate::Exiting => { break }
             }
         }
@@ -31,16 +34,19 @@ enum Navigate {
     Home,
     GroupM,
     GroupN,
+    GroupP,
     Exiting,
 }
 fn menu_home() {
     println!("0: Выход");
     println!("1: Практическое занятие №3 Тема: «Работа с файлами и потоками ввода-вывода.»");
     println!("2: Практическое занятие №4 Тема: «Работа с динамической памятью и управление ею»");
+    println!("3: Анализ текста");
     match read_line().trim() {
         "0" => unsafe { CURRENT_POSITON=Navigate::Exiting },
         "1" => unsafe { CURRENT_POSITON = Navigate::GroupM },
         "2" => unsafe { CURRENT_POSITON = Navigate::GroupN },
+        "3" => unsafe { CURRENT_POSITON = Navigate::GroupP },
         _ => {println!("Недопустимый вариант")}
     }
 }
@@ -76,6 +82,16 @@ fn group_n(){
         "3" => task_n3(),
         "4" => task_n4(),
         "5" => task_n5(),
+        _ => {println!("Недопустимый вариант")}
+    }
+}
+
+fn group_p(){
+    println!("0: Назад");
+    println!("1: ...");
+    match read_line().trim() {
+        "0" => unsafe {CURRENT_POSITON=Navigate::Home},
+        "1" => task_p1(),
         _ => {println!("Недопустимый вариант")}
     }
 }
