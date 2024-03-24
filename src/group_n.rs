@@ -149,6 +149,6 @@ pub fn task_n5() {
     let a = Box::new(read_line());
     print("input: ");
     let b = Box::new(read_line());
-    let c = Box::new(format!("{}{}",*a.trim(),b.trim()));
+    let c = Box::new(format!("{}{}",a.trim(),b.trim()));
     println!("{:?}",c);
 }
