@@ -54,7 +54,7 @@ pub fn task_n2() {
     for i in 0..y {
         for j in 0..x {
             matrix[i][j] = rand::thread_rng().gen_range(1..=100);
-            print(format!("{} ", matrix[i][j]).as_str());
+            print(format!("{:.4} ", matrix[i][j]).as_str());
         }
         println!();
     }
@@ -149,6 +149,6 @@ pub fn task_n5() {
     let a = Box::new(read_line());
     print("input: ");
     let b = Box::new(read_line());
-    let c = Box::new(format!("{}{}",a.trim(),b.trim()));
+    let c = Box::new(format!("{}{}",*a.trim(),b.trim()));
     println!("{:?}",c);
 }
