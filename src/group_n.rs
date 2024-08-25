@@ -125,6 +125,12 @@ impl Student {
 /// Выведите информацию о студентах на экран.
 pub fn task_n4() {
     let in_file_data = read_file_all(PATH_FILE_4);
+
+    if in_file_data.len() == 0 {
+        println!("[E] no data available");
+        return;
+    }
+
     let in_file_data = in_file_data.split('\n');
 
     let mut students: Vec<Student> = vec![];
